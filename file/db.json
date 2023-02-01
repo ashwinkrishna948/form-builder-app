@@ -1,0 +1,159 @@
+{
+  "children": [
+    {
+      "name": "district",
+      "bind": {
+        "required": "true"
+      },
+      "label": "Dis",
+      "type": "select_one"
+    },
+    {
+      "name": "state",
+      "bind": {
+        "required": "true"
+      },
+      "label": "State",
+      "type": "select_one"
+    },
+    {
+      "name": "house",
+      "bind": {
+        "required": "true"
+      },
+      "label": "House",
+      "type": "text"
+    },
+    {
+      "name": "temp_password",
+      "bind": {
+        "required": "true"
+      },
+      "label": "Temporary Password",
+      "type": "password"
+    },
+    {
+      "name": "sound",
+      "bind": {
+        "required": "false"
+      },
+      "label": "Sound",
+      "type": "audio"
+    },
+    {
+      "name": "server_pass",
+      "bind": {
+        "required": "true"
+      },
+      "label": "Server Password",
+      "type": "password"
+    },
+    {
+      "name": "list",
+      "bind": {
+        "required": "true"
+      },
+      "label": "List",
+      "type": "select_many"
+    },
+    {
+      "name": "colour",
+      "bind": {
+        "required": "false"
+      },
+      "label": "Colour",
+      "type": "text"
+    },
+    {
+      "name": "pet_name",
+      "bind": {
+        "required": "true"
+      },
+      "label": "Pet Name",
+      "type": "text"
+    },
+    {
+      "name": "office_email",
+      "bind": {
+        "required": "true"
+      },
+      "label": "Office Email",
+      "type": "email"
+    },
+    {
+      "name": "work_Add",
+      "bind": {
+        "required": "true"
+      },
+      "label": "Work Address",
+      "type": "address"
+    },
+    {
+      "name": "picture",
+      "bind": {
+        "required": "false"
+      },
+      "label": "Picture",
+      "type": "photo"
+    },
+    {
+      "name": "del_Add",
+      "bind": {
+        "required": "false"
+      },
+      "label": "Delivery Address",
+      "type": "address"
+    },
+    {
+      "name": "car_name",
+      "bind": {
+        "required": "false"
+      },
+      "label": "Car Name",
+      "type": "text"
+    },
+    {
+      "name": "height",
+      "bind": {
+        "required": "false"
+      },
+      "label": "Height",
+      "type": "integer"
+    },
+    
+    {
+      "name": "ios",
+      "bind": {
+        "required": "false"
+      },
+      "label": "IOS",
+      "type": "text"
+    },
+    {
+      "name": "xolo",
+      "bind": {
+        "required": "false"
+      },
+      "label": "Xolo",
+      "type": "text"
+    },
+    {
+      "name": "player",
+      "bind": {
+        "required": "true"
+      },
+      "label": "Player",
+      "type": "text"
+    },
+    {
+      "name": "coach",
+      "bind": {
+        "required": "true"
+      },
+      "label": "Coach",
+      "type": "phone"
+    },
+    
+  ],
+  "choices": {}
+}

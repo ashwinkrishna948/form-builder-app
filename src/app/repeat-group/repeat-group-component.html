@@ -1,0 +1,85 @@
+<div class="container" style="border-style: double">
+  <div class="row align-items-center">
+      
+      <div class="col-sm-3" style="padding-top: 5px;">
+         <ul style="list-style-type:none;">
+             <li>Name: {{ data.name }}</li>
+             <li *ngIf="data.label">Label: {{ data.label }}</li>
+             <li>Type: {{ data.type }}</li> 
+         </ul>
+      </div>
+
+      <div class="col-sm-5"></div>
+
+      <div class="col-sm-2">
+          <button type="button" class="btn btn-primary" data-toggle="modal" [attr.data-target]="'#' + form_Obj.name">Add Question</button>
+      </div>
+
+      <div class="col-sm-2">
+        <button type="button" class="btn btn-danger" data-toggle="modal" [attr.data-target]="'#' + form_Obj.name + 'confDelete'">Delete Group</button>
+      </div>
+   
+
+  </div>
+
+  <div class="container">
+      <ng-template #embedContainer></ng-template>
+  </div>
+
+</div>
+
+<form #myForm = "ngForm" (ngSubmit)="repeatgroupAddQuestion(myForm)">
+  <div class="modal fade" #basicModal1 [id]="form_Obj.name" role="dialog">
+    <div class="modal-dialog">  
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h4 class="modal-title" >Add Question</h4>&nbsp;&nbsp; 
+          <button type="button" #closeButton1 class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <div class="modal-body">
+          Name: <input type="text" name="name" placeholder="Enter Name" ngModel required><br><br>
+          Required:  <mat-checkbox name="required" [checked]="isChecked" (change)="isChecked==$event.checked" ngModel></mat-checkbox><br><br>
+          Label: <input type="text" name="label" placeholder="Enter Label" ngModel required> <br><br>
+          Type:<select name="type" placeholder="Choose the type of question" ngModel required>
+              <option *ngFor="let type of qtypeList" [value]="type">{{type}}</option>
+            </select><br><br>
+        </div>
+        
+        <div class="modal-footer">
+          <button type="submit" [id]="form_Obj.name + 'AddButton'" class="btn btn-success btn-lg" [disabled]="myForm.invalid" >Add</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</form>  
+
+
+<!---->
+<form #myForm2 = "ngForm" (ngSubmit)="deleteComponent(myForm2)">
+  <div class="modal fade" [id]="form_Obj.name + 'confDelete'" role="dialog">
+    <div class="modal-dialog">  
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h4 class="modal-title" >Confirm Deletion</h4>&nbsp;&nbsp; 
+          <button type="button" #closeButton2 class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <div class="modal-body">
+          <h3>Do you want to delete this Question?</h3>
+          <br/>
+          Retain Sub Questions:  <mat-checkbox name="retained" [checked]="isRetained" (change)="isRetained==$event.checked" ngModel></mat-checkbox><br><br>
+        </div>
+        
+        <div class="modal-footer">
+          <button type="submit" [id]="form_Obj.name + 'DeleteButton'" class="btn btn-danger btn-lg" >Yes</button>
+          <button type="button" class="btn btn-success btn-lg" data-dismiss="modal">No</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</form>  

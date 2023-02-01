@@ -1,0 +1,106 @@
+<div class="jumbotron text-center">
+	<h1 class="display-5">
+		Angular Form Builder
+	</h1>
+</div>
+
+<div class="container">
+  <div class="card text-center">
+    <div class="card-header bg-warning"><h2>Sample Form</h2></div>    
+    <div class="card-body">
+      <div class="container">
+        <ng-template #dynamic></ng-template>
+    </div>
+    </div>
+    <div class="card-footer">
+      <button type="button" class="btn btn-success btn-lg" (click)="onSubmit()">Submit</button>
+    </div>
+    <!--div class="card-footer">
+      <button type="button" class="btn btn-success btn-lg" (click)="LoadQ()">Load Form</button>
+    </div-->
+  </div>
+  <br><br> 
+  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#addQuestionMain">Add Question</button>
+  <br><br><label for="myfile"> Select a form (json or xlsx ) :   </label>
+  <input type="file" id="myfile" name="myfile" accept=".json,.xlsx" (change)="changeListener($event)"><br><br> 
+</div>
+
+<form #myForm = "ngForm" (ngSubmit)="submitAddQuestion(myForm)">
+  <div class="modal fade" id="addQuestionMain" role="dialog">
+    <div class="modal-dialog">  
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h4 class="modal-title">Add Question</h4>&nbsp;&nbsp; 
+          <button type="button" #close class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <div class="modal-body">
+          Name: <input type="text" name="name" placeholder="Enter Name" ngModel required><br><br>
+          Required:  <mat-checkbox name="required" [checked]="isChecked" (change)="isChecked==$event.checked" ngModel></mat-checkbox><br><br>
+          Label: <input type="text" name="label" placeholder="Enter Label" ngModel required> <br><br>
+          Type:<select name="type" placeholder="Choose the type of question" [(ngModel)]="selectedValue" required>
+              <option *ngFor="let type of qtypeList" [value]="type">{{type}}</option>
+            </select><br><br>
+        </div>
+        
+        <div class="choiceform" *ngIf="selectedValue == qtypeList[4] || selectedValue == qtypeList[5] ">
+          <form #optionForm="ngForm" class="container mt-3" (ngSubmit)="logValue()">
+            <div class="row justify-content-center">
+              <div class="col-6">
+                  <button type="button" class="btn btn-primary mb-2" (click)="addOptions()">Add Options</button><br><br>
+
+                <section class="container border mb-1 p-2" style="width: 240px;" *ngFor="let option of options; let i = index;">
+                  <div class="row">
+                    <div class="col-4 text-left">
+                        <h4>Option{{i + 1}} </h4>
+                    </div>
+                    <div class="col-8 text-right">
+                        <button type="button" class="btn btn-danger btn-sm" (click)="removeOption(i)">Remove</button>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" class="form-control" [(ngModel)]="option.name" name="name_{{option.id}}" placeholder="vanilla"/>
+                          </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label>Label</label>
+                            <input type="text" class="form-control" [(ngModel)]="option.label" name="label_{{option.id}}" placeholder="Vanilla"/>
+                          </div>
+                    </div>
+                  </div>
+                </section>
+          
+                <div class="text-right">
+                    <input type="submit" class="btn btn-success" value="Submit"/>
+                </div>
+                
+              </div>
+            </div>
+        </form>  
+        </div>
+        
+
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-success btn-lg" [disabled]="myForm.invalid">Add</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</form>
+
+
+  <!---
+  <div>
+    <p hidden (onDeleteComp)="removeComp($event)"></p>
+  </div>
+-->
+
+
+
+

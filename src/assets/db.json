@@ -1,0 +1,45 @@
+{
+  "children": [
+    {
+      "name": "ashwin",
+      "bind": {
+        "required": "true"
+      },
+      "label": "Ashwin",
+      "type": "text"
+    },
+    {
+      "name": "knf",
+      "bind": {
+        "required": "false"
+      },
+      "label": "Kng",
+      "type": "text"
+    },
+    {
+      "name": "jg",
+      "bind": {
+        "required": "false"
+      },
+      "label": "Jg",
+      "type": "address"
+    },
+    {
+      "name": "jjv",
+      "bind": {
+        "required": "true"
+      },
+      "label": "jfj",
+      "type": "select_one"
+    },
+    {
+      "name": "nalm",
+      "bind": {
+        "required": "true"
+      },
+      "label": "Nfj",
+      "type": "text"
+    }
+  ],
+  "choices": []
+}

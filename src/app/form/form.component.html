@@ -1,0 +1,94 @@
+<div class="container" style="border-style: double">
+    <div class="row align-items-center">
+        
+        <div class="col-sm-3" style="padding-top: 5px;">
+           <ul style="list-style-type:none;">
+               <li>Name: {{ data.name }}</li>
+               <li *ngIf="data.label">Label: {{ data.label }}</li>
+               <li>Type: {{ data.type }}</li>
+           </ul>
+        </div>
+
+        <div class="col-sm-6"></div>
+
+        <div class="col-sm-1">
+          <button type="button" class="btn btn-primary" (click)="openEditDialog(editQuestionDialog)">Edit</button>    
+        </div>
+        
+        <div class="col-sm-2">
+            <button type="button" class="btn btn-danger" (click)="remove_me()">Delete</button>  
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="optionsdiv" *ngIf="form_Obj.choices!=null">
+            <section class="container border mb-2 p-3" style="padding-left:30px ;" *ngFor="let choice of form_Obj.choices ; let i = index">
+                <div class="row">
+                    <p>Option{{ i + 1 }}</p>
+                </div>
+                <div class="row">
+                    <p>Name : {{ choice.name }}</p>
+                </div>
+                <div class="row">
+                    <p>Label : {{ choice.label }}</p>
+                </div>
+
+            </section>
+        </div>
+    </div>
+</div>
+
+
+
+<ng-template #editQuestionDialog>
+    
+    <div>
+        <h4 class="dialog-headline">Edit Question
+            <span>
+                <button mat-icon-button class="close-button" [mat-dialog-close]="true">
+                    <mat-icon class="close-icon" color="warn">close</mat-icon>
+                  </button>
+        </span></h4>
+    </div>
+    
+    <form [formGroup]="editform" (ngSubmit)="submit()">
+        <mat-tab-group #matgroup>
+            <mat-tab label="Question Settings">
+                <div class="tab-content">
+                    <div class="content-container tab-content-height">
+                        <mat-form-field>
+                            <input matInput formControlName="datacolname" placeholder="Enter Name">
+                        </mat-form-field>
+    
+                        <mat-form-field>
+                            <input matInput formControlName="defresponse" placeholder="Enter Default Response">
+                        </mat-form-field>
+                        <mat-dialog-actions class="pull-right">
+                            <button mat-raised-button color="primary" (click)='matgroup.selectedIndex = 1'>Next</button>
+                        </mat-dialog-actions>
+                    </div>
+                </div>
+            </mat-tab>
+            <mat-tab label="Validation Criteria">
+                <div class="tab-content" style="height: 140px">
+    
+                    <div class="content-container">
+                        <mat-form-field>
+                            <input matInput formControlName="constraintMsg" placeholder="Enter Constraint Message">
+                        </mat-form-field>
+    
+                        <mat-form-field>
+                            <input matInput formControlName="constraintCriteria" placeholder="Enter Constraint Criteria">
+                        </mat-form-field>
+                    </div>
+    
+                    <mat-dialog-actions>
+                        <button mat-raised-button color="primary" type="submit" style="margin-left: 20px;">Save</button>
+                        <button mat-raised-button color="primary" (click)='matgroup.selectedIndex = 0'>Back</button>
+                    </mat-dialog-actions>
+                </div>
+            </mat-tab>
+        </mat-tab-group>
+    </form>
+
+</ng-template>
